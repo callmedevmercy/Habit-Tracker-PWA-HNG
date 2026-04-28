@@ -43,11 +43,11 @@ const HabitCard = memo(function HabitCard({ habit, onEdit, onDelete, onToggleCom
             {currentStreak > 0 && <span aria-hidden="true" className="text-lg animate-pulse">🔥</span>}
           </div>
         </div>
-        <div className="flex flex-wrap gap-3 justify-end w-full sm:w-auto">
+        <div className="flex flex-col sm:flex-row gap-3 w-full sm:w-auto mt-4 sm:mt-0">
           <button
             onClick={handleToggle}
             data-testid={`habit-complete-${slug}`}
-            className={`px-5 py-2 rounded-lg text-sm font-medium transition shadow-sm ${isCompletedToday ? 'bg-brand text-background hover:bg-brand-light' : 'bg-white border border-brand/20 text-brand hover:bg-brand/5'}`}
+            className={`w-full sm:w-auto px-5 py-2.5 sm:py-2 rounded-lg text-sm font-medium transition shadow-sm ${isCompletedToday ? 'bg-brand text-background hover:bg-brand-light' : 'bg-white border border-brand/20 text-brand hover:bg-brand/5'}`}
             aria-label={isCompletedToday ? `Unmark ${habit.name} for today` : `Mark ${habit.name} complete for today`}
             aria-pressed={isCompletedToday}
           >
@@ -56,7 +56,7 @@ const HabitCard = memo(function HabitCard({ habit, onEdit, onDelete, onToggleCom
           <button
             onClick={handleEdit}
             data-testid={`habit-edit-${slug}`}
-            className="px-5 py-2 bg-white border border-brand/20 text-brand rounded-lg text-sm font-medium hover:bg-brand/5 transition shadow-sm"
+            className="w-full sm:w-auto px-5 py-2.5 sm:py-2 bg-white border border-brand/20 text-brand rounded-lg text-sm font-medium hover:bg-brand/5 transition shadow-sm"
             aria-label={`Edit ${habit.name}`}
           >
             Edit
@@ -65,16 +65,16 @@ const HabitCard = memo(function HabitCard({ habit, onEdit, onDelete, onToggleCom
             <button
               onClick={handleDelete}
               data-testid="confirm-delete-button"
-              className="px-5 py-2 bg-red-600 text-white rounded-lg text-sm font-medium hover:bg-red-700 transition shadow-sm"
+              className="w-full sm:w-auto px-5 py-2.5 sm:py-2 bg-red-600 text-white rounded-lg text-sm font-medium hover:bg-red-700 transition shadow-sm"
               aria-label={`Confirm delete ${habit.name}`}
             >
-              Confirm Delete
+              Confirm
             </button>
           ) : (
             <button
               onClick={handleDelete}
               data-testid={`habit-delete-${slug}`}
-              className="px-5 py-2 bg-white border border-red-200 text-red-600 rounded-lg text-sm font-medium hover:bg-red-50 transition shadow-sm"
+              className="w-full sm:w-auto px-5 py-2.5 sm:py-2 bg-white border border-red-200 text-red-600 rounded-lg text-sm font-medium hover:bg-red-50 transition shadow-sm"
               aria-label={`Delete ${habit.name}`}
             >
               Delete

@@ -91,12 +91,12 @@ export default function DashboardPage() {
     <ProtectedRoute>
       <div data-testid="dashboard-page" className="min-h-screen p-4 md:p-8">
         <div className="max-w-4xl mx-auto">
-          <div className="flex justify-between items-center mb-10">
-            <h1 className="text-4xl font-serif font-bold text-brand">My Habits</h1>
+          <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center mb-8 sm:mb-10 gap-4 sm:gap-0">
+            <h1 className="text-3xl sm:text-4xl font-serif font-bold text-brand">My Habits</h1>
             <button
               onClick={handleLogout}
               data-testid="auth-logout-button"
-              className="px-5 py-2.5 bg-white/60 backdrop-blur-sm border border-brand/20 text-brand rounded-lg font-medium hover:bg-white shadow-sm transition"
+              className="w-full sm:w-auto px-5 py-2.5 bg-white/60 backdrop-blur-sm border border-brand/20 text-brand rounded-lg font-medium hover:bg-white shadow-sm transition"
               aria-label="Log out"
             >
               Logout
@@ -107,7 +107,7 @@ export default function DashboardPage() {
             <button
               onClick={() => setIsFormOpen(true)}
               data-testid="create-habit-button"
-              className="mb-8 px-6 py-3 bg-brand text-background rounded-lg font-medium shadow-md hover:bg-brand-light transition"
+              className="w-full sm:w-auto mb-8 px-6 py-3 bg-brand text-background rounded-lg font-medium shadow-md hover:bg-brand-light transition"
               aria-expanded={isFormOpen}
             >
               Create Habit
