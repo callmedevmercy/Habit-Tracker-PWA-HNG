@@ -29,8 +29,12 @@ const HabitCard = memo(function HabitCard({ habit, onEdit, onDelete, onToggleCom
   const handleToggle = useCallback(() => onToggleComplete(habit, today), [onToggleComplete, habit, today]);
 
   return (
-    <div data-testid={`habit-card-${slug}`} className={`border rounded-xl p-6 mb-4 shadow-sm transition-all ${isCompletedToday ? 'bg-brand/10 border-brand/30' : 'bg-white/70 backdrop-blur-sm border-brand/10'}`}>
-      <div className="flex flex-col sm:flex-row justify-between items-start">
+    <div data-testid={`habit-card-${slug}`} className={`relative overflow-hidden border rounded-xl p-6 mb-4 shadow-sm transition-all ${isCompletedToday ? 'bg-brand/10 border-brand/30' : 'bg-white/70 backdrop-blur-sm border-brand/10'}`}>
+      {/* Decorative Flowers */}
+      <div className="absolute -right-4 -bottom-4 text-6xl opacity-10 pointer-events-none transform -rotate-12 select-none grayscale-0 filter" aria-hidden="true">🌸</div>
+      <div className="absolute -left-3 -top-3 text-4xl opacity-10 pointer-events-none transform rotate-45 select-none" aria-hidden="true">🌺</div>
+      
+      <div className="relative z-10 flex flex-col sm:flex-row justify-between items-start">
         <div className="mb-4 sm:mb-0">
           <h3 className="text-2xl font-serif font-bold text-brand">{habit.name}</h3>
           {habit.description && <p className="text-brand/80 mt-1.5 leading-relaxed">{habit.description}</p>}
