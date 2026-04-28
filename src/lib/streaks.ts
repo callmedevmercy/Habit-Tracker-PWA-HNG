@@ -16,7 +16,7 @@ export function calculateCurrentStreak(completions: string[], today?: string): n
     const dateStr = currentDate.toISOString().split('T')[0];
     if (uniqueDates.includes(dateStr)) {
       streak++;
-      currentDate.setDate(currentDate.getDate() - 1);
+      currentDate.setUTCDate(currentDate.getUTCDate() - 1);
     } else {
       break;
     }
