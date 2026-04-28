@@ -61,27 +61,42 @@ const HabitCard = memo(function HabitCard({ habit, onEdit, onDelete, onToggleCom
           >
             Edit
           </button>
-          {showDeleteConfirm ? (
-            <button
-              onClick={handleDelete}
-              data-testid="confirm-delete-button"
-              className="w-full sm:w-auto px-5 py-2.5 sm:py-2 bg-red-600 text-white rounded-lg text-sm font-medium hover:bg-red-700 transition shadow-sm"
-              aria-label={`Confirm delete ${habit.name}`}
-            >
-              Confirm
-            </button>
-          ) : (
-            <button
-              onClick={handleDelete}
-              data-testid={`habit-delete-${slug}`}
-              className="w-full sm:w-auto px-5 py-2.5 sm:py-2 bg-white border border-red-200 text-red-600 rounded-lg text-sm font-medium hover:bg-red-50 transition shadow-sm"
-              aria-label={`Delete ${habit.name}`}
-            >
-              Delete
-            </button>
-          )}
+          <button
+            onClick={() => setShowDeleteConfirm(true)}
+            data-testid={`habit-delete-${slug}`}
+            className="w-full sm:w-auto px-5 py-2.5 sm:py-2 bg-white border border-red-200 text-red-600 rounded-lg text-sm font-medium hover:bg-red-50 transition shadow-sm"
+            aria-label={`Delete ${habit.name}`}
+          >
+            Delete
+          </button>
         </div>
       </div>
+
+      {/* Delete Confirmation Modal */}
+      {showDeleteConfirm && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/40 backdrop-blur-sm animate-in fade-in duration-200" onClick={() => setShowDeleteConfirm(false)}>
+          <div className="bg-white rounded-xl shadow-xl w-full max-w-sm p-6 transform transition-all" onClick={e => e.stopPropagation()}>
+            <h3 className="text-xl font-serif font-bold text-brand mb-3">Delete Habit?</h3>
+            <p className="text-brand/80 text-sm mb-6">Are you sure you want to delete &quot;{habit.name}&quot;? This action cannot be undone.</p>
+            
+            <div className="flex flex-col sm:flex-row gap-3 justify-end">
+              <button
+                onClick={() => setShowDeleteConfirm(false)}
+                className="w-full sm:w-auto px-5 py-2.5 sm:py-2 bg-gray-100 text-brand rounded-lg text-sm font-medium hover:bg-gray-200 transition"
+              >
+                Cancel
+              </button>
+              <button
+                onClick={() => onDelete(habit.id)}
+                data-testid="confirm-delete-button"
+                className="w-full sm:w-auto px-5 py-2.5 sm:py-2 bg-red-600 text-white rounded-lg text-sm font-medium hover:bg-red-700 transition shadow-sm"
+              >
+                Confirm Delete
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 });
